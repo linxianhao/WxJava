@@ -268,8 +268,7 @@ public class WxPayRefundNotifyResult extends BaseWxPayResult implements Serializ
      * @return ReqInfo对象
      */
     public static ReqInfo fromXML(String xmlString) {
-      XStream xstream = XStreamInitializer.getInstance();
-      xstream.processAnnotations(ReqInfo.class);
+      XStream xstream = XStreamInitializer.getInstance(ReqInfo.class);
       return (ReqInfo) xstream.fromXML(xmlString);
     }
   }

@@ -42,9 +42,9 @@ public class ApiTestModule implements Module {
 
   @SuppressWarnings("unchecked")
   private <T> T fromXml(Class<T> clazz, InputStream is) {
-    XStream xstream = XStreamInitializer.getInstance();
+    XStream xstream = XStreamInitializer.getInstance(clazz);
     xstream.alias("xml", clazz);
-    xstream.processAnnotations(clazz);
+    //xstream.processAnnotations(clazz);
     return (T) xstream.fromXML(is);
   }
 

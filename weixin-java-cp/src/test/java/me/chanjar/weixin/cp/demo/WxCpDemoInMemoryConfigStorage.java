@@ -15,8 +15,8 @@ import me.chanjar.weixin.cp.config.impl.WxCpDefaultConfigImpl;
 @ToString
 public class WxCpDemoInMemoryConfigStorage extends WxCpDefaultConfigImpl {
   public static WxCpDemoInMemoryConfigStorage fromXml(InputStream is) {
-    XStream xstream = XStreamInitializer.getInstance();
-    xstream.processAnnotations(WxCpDemoInMemoryConfigStorage.class);
+    XStream xstream = XStreamInitializer.getInstance(WxCpDemoInMemoryConfigStorage.class);
+    //xstream.processAnnotations(WxCpDemoInMemoryConfigStorage.class);
     return (WxCpDemoInMemoryConfigStorage) xstream.fromXML(is);
   }
 

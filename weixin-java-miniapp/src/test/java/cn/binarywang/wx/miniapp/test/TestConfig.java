@@ -20,8 +20,8 @@ public class TestConfig extends WxMaDefaultConfigImpl {
   private String templateId;
 
   public static TestConfig fromXml(InputStream is) {
-    XStream xstream = XStreamInitializer.getInstance();
-    xstream.processAnnotations(TestConfig.class);
+    XStream xstream = XStreamInitializer.getInstance(TestConfig.class);
+    //xstream.processAnnotations(TestConfig.class);
     return (TestConfig) xstream.fromXML(is);
   }
 

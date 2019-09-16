@@ -70,9 +70,9 @@ public class XStreamTransformer {
    * @param clz 要注册的类
    */
   private static void registerClass(Class<?> clz) {
-    XStream xstream = XStreamInitializer.getInstance();
+    XStream xstream = XStreamInitializer.getInstance(clz);
 
-    xstream.processAnnotations(clz);
+    //xstream.processAnnotations(clz);
     xstream.processAnnotations(getInnerClasses(clz));
     if (clz.equals(WxMpXmlMessage.class)) {
       // 操蛋的微信，模板消息推送成功的消息是MsgID，其他消息推送过来是MsgId

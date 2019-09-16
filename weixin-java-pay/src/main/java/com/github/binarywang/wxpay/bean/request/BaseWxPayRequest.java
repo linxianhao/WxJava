@@ -188,11 +188,10 @@ public abstract class BaseWxPayRequest implements Serializable {
    * @return the string
    */
   public String toXML() {
-    XStream xstream = XStreamInitializer.getInstance();
+    XStream xstream = XStreamInitializer.getInstance(this.getClass());
     //涉及到服务商模式的两个参数，在为空值时置为null，以免在请求时将空值传给微信服务器
     this.setSubAppId(StringUtils.trimToNull(this.getSubAppId()));
     this.setSubMchId(StringUtils.trimToNull(this.getSubMchId()));
-    xstream.processAnnotations(this.getClass());
     return xstream.toXML(this);
   }
 

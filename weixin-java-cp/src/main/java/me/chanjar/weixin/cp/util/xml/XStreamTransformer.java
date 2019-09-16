@@ -66,70 +66,57 @@ public class XStreamTransformer {
   }
 
   private static XStream configWxCpXmlMessage() {
-    XStream xstream = XStreamInitializer.getInstance();
-
-    xstream.processAnnotations(WxCpXmlMessage.class);
-    xstream.processAnnotations(WxCpXmlMessage.ScanCodeInfo.class);
-    xstream.processAnnotations(WxCpXmlMessage.SendPicsInfo.class);
-    xstream.processAnnotations(WxCpXmlMessage.SendPicsInfo.Item.class);
-    xstream.processAnnotations(WxCpXmlMessage.SendLocationInfo.class);
-    return xstream;
+    return XStreamInitializer.getInstance(new Class[]{
+      WxCpXmlMessage.class,
+      WxCpXmlMessage.ScanCodeInfo.class,
+      WxCpXmlMessage.SendPicsInfo.class,
+      WxCpXmlMessage.SendPicsInfo.Item.class,
+      WxCpXmlMessage.SendLocationInfo.class});
   }
 
   private static XStream configWxCpXmlOutImageMessage() {
-    XStream xstream = XStreamInitializer.getInstance();
-
-    xstream.processAnnotations(WxCpXmlOutMessage.class);
-    xstream.processAnnotations(WxCpXmlOutImageMessage.class);
-    return xstream;
+    return XStreamInitializer.getInstance(new Class[]{
+      WxCpXmlOutMessage.class,
+      WxCpXmlOutImageMessage.class
+    });
   }
 
   private static XStream configWxCpXmlOutNewsMessage() {
-    XStream xstream = XStreamInitializer.getInstance();
-
-    xstream.processAnnotations(WxCpXmlOutMessage.class);
-    xstream.processAnnotations(WxCpXmlOutNewsMessage.class);
-    xstream.processAnnotations(WxCpXmlOutNewsMessage.Item.class);
-    return xstream;
+    return XStreamInitializer.getInstance(new Class[]{
+      WxCpXmlOutMessage.class,
+      WxCpXmlOutNewsMessage.class,
+      WxCpXmlOutNewsMessage.Item.class
+    });
   }
 
   private static XStream configWxCpXmlOutTextMessage() {
-    XStream xstream = XStreamInitializer.getInstance();
-
-    xstream.processAnnotations(WxCpXmlOutMessage.class);
-    xstream.processAnnotations(WxCpXmlOutTextMessage.class);
-    return xstream;
+    return XStreamInitializer.getInstance(new Class[]{
+      WxCpXmlOutMessage.class,
+      WxCpXmlOutTextMessage.class
+    });
   }
 
   private static XStream configWxCpXmlOutVideoMessage() {
-    XStream xstream = XStreamInitializer.getInstance();
-
-    xstream.processAnnotations(WxCpXmlOutMessage.class);
-    xstream.processAnnotations(WxCpXmlOutVideoMessage.class);
-    xstream.processAnnotations(WxCpXmlOutVideoMessage.Video.class);
-    return xstream;
+    return XStreamInitializer.getInstance(new Class[]{
+      WxCpXmlOutMessage.class,
+      WxCpXmlOutVideoMessage.class,
+      WxCpXmlOutVideoMessage.Video.class
+    });
   }
 
   private static XStream configWxCpXmlOutVoiceMessage() {
-    XStream xstream = XStreamInitializer.getInstance();
-
-    xstream.processAnnotations(WxCpXmlOutMessage.class);
-    xstream.processAnnotations(WxCpXmlOutVoiceMessage.class);
-    return xstream;
+    return XStreamInitializer.getInstance(new Class[]{
+      WxCpXmlOutMessage.class,
+      WxCpXmlOutVoiceMessage.class
+    });
   }
   
   private static XStream configWxCpTpXmlPackage() {
-    XStream xstream = XStreamInitializer.getInstance();
-    xstream.processAnnotations(WxCpTpXmlPackage.class);
-    
-    return xstream;
+    return XStreamInitializer.getInstance(WxCpTpXmlPackage.class);
   }
   
   private static XStream configWxCpTpXmlMessage() {
-    XStream xstream = XStreamInitializer.getInstance();
-    xstream.processAnnotations(WxCpTpXmlMessage.class);
-    
-    return xstream;
+    return XStreamInitializer.getInstance(WxCpTpXmlMessage.class);
   }
 
 }

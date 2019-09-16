@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.binarywang</groupId>
   <artifactId>wx-java</artifactId>
-  <version>3.5.0</version>
+  <version>3.5.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>WxJava - Weixin/Wechat Java SDK</name>
   <description>微信开发Java SDK</description>
@@ -254,14 +254,25 @@
   </dependencyManagement>
 
   <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
+    <!--<snapshotRepository>-->
+      <!--<id>ossrh</id>-->
+      <!--<url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+    <!--</snapshotRepository>-->
+    <!--<repository>-->
+      <!--<id>ossrh</id>-->
+      <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+    <!--</repository>-->
+
     <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      <id>releases</id>
+      <name>releases</name>
+      <url>http://maven.ikuko.com/nexus/content/repositories/releases/</url>
     </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>SnapShots</name>
+      <url>http://maven.ikuko.com/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
   </distributionManagement>
 
   <profiles>
@@ -278,53 +289,53 @@
     <profile>
       <id>release</id>
       <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-            <version>2.2.1</version>
-            <executions>
-              <execution>
-                <id>attach-sources</id>
-                <goals>
-                  <goal>jar-no-fork</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <version>2.9.1</version>
-            <executions>
-              <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <additionalparam>${javadoc.opts}</additionalparam>
-              <charset>UTF-8</charset>
-              <locale>zh_CN</locale>
-            </configuration>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
-            <executions>
-              <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
+        <!--<plugins>-->
+          <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-source-plugin</artifactId>-->
+            <!--<version>2.2.1</version>-->
+            <!--<executions>-->
+              <!--<execution>-->
+                <!--<id>attach-sources</id>-->
+                <!--<goals>-->
+                  <!--<goal>jar-no-fork</goal>-->
+                <!--</goals>-->
+              <!--</execution>-->
+            <!--</executions>-->
+          <!--</plugin>-->
+          <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+            <!--<version>2.9.1</version>-->
+            <!--<executions>-->
+              <!--<execution>-->
+                <!--<id>attach-javadocs</id>-->
+                <!--<goals>-->
+                  <!--<goal>jar</goal>-->
+                <!--</goals>-->
+              <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+              <!--<additionalparam>${javadoc.opts}</additionalparam>-->
+              <!--<charset>UTF-8</charset>-->
+              <!--<locale>zh_CN</locale>-->
+            <!--</configuration>-->
+          <!--</plugin>-->
+          <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-gpg-plugin</artifactId>-->
+            <!--<version>1.6</version>-->
+            <!--<executions>-->
+              <!--<execution>-->
+                <!--<id>sign-artifacts</id>-->
+                <!--<phase>verify</phase>-->
+                <!--<goals>-->
+                  <!--<goal>sign</goal>-->
+                <!--</goals>-->
+              <!--</execution>-->
+            <!--</executions>-->
+          <!--</plugin>-->
+        <!--</plugins>-->
       </build>
     </profile>
   </profiles>
@@ -344,17 +355,17 @@
     </pluginManagement>
 
     <plugins>
-      <plugin>
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.3</version>
-        <extensions>true</extensions>
-        <configuration>
-          <serverId>ossrh</serverId>
-          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-          <autoReleaseAfterClose>true</autoReleaseAfterClose>
-        </configuration>
-      </plugin>
+      <!--<plugin>-->
+        <!--<groupId>org.sonatype.plugins</groupId>-->
+        <!--<artifactId>nexus-staging-maven-plugin</artifactId>-->
+        <!--<version>1.6.3</version>-->
+        <!--<extensions>true</extensions>-->
+        <!--<configuration>-->
+          <!--<serverId>ossrh</serverId>-->
+          <!--<nexusUrl>https://oss.sonatype.org/</nexusUrl>-->
+          <!--<autoReleaseAfterClose>true</autoReleaseAfterClose>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
@@ -388,5 +399,15 @@
       </plugin>
     </plugins>
   </build>
-
+  <repositories>
+    <repository>
+      <id>nexus</id>
+      <name>nexus</name>
+      <url>http://maven.ikuko.com/nexus/content/groups/public/</url>
+      <releases>
+      </releases>
+      <snapshots>
+      </snapshots>
+    </repository>
+  </repositories>
 </project>

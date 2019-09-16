@@ -16,8 +16,8 @@ class WxMpDemoInMemoryConfigStorage extends WxMpDefaultConfigImpl {
   private static final long serialVersionUID = -3706236839197109704L;
 
   public static WxMpDemoInMemoryConfigStorage fromXml(InputStream is) {
-    XStream xstream = XStreamInitializer.getInstance();
-    xstream.processAnnotations(WxMpDemoInMemoryConfigStorage.class);
+    XStream xstream = XStreamInitializer.getInstance(WxMpDemoInMemoryConfigStorage.class);
+    //xstream.processAnnotations(WxMpDemoInMemoryConfigStorage.class);
     WxMpDemoInMemoryConfigStorage wxMpDemoInMemoryConfigStorage = (WxMpDemoInMemoryConfigStorage) xstream.fromXML(is);
     wxMpDemoInMemoryConfigStorage.accessTokenLock = new ReentrantLock();
     wxMpDemoInMemoryConfigStorage.cardApiTicketLock = new ReentrantLock();

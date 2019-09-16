@@ -129,8 +129,8 @@ public abstract class BaseWxPayResult implements Serializable {
    * @return the t
    */
   public static <T extends BaseWxPayResult> T fromXML(String xmlString, Class<T> clz) {
-    XStream xstream = XStreamInitializer.getInstance();
-    xstream.processAnnotations(clz);
+    XStream xstream = XStreamInitializer.getInstance(clz);
+    //xstream.processAnnotations(clz);
     T result = (T) xstream.fromXML(xmlString);
     result.setXmlString(xmlString);
     return result;

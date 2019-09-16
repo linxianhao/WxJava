@@ -19,9 +19,9 @@ public class ApiTestModule implements Module {
   private static final String TEST_CONFIG_XML = "test-config.xml";
 
   private static <T> T fromXml(Class<T> clazz, InputStream is) {
-    XStream xstream = XStreamInitializer.getInstance();
+    XStream xstream = XStreamInitializer.getInstance(clazz);
     xstream.alias("xml", clazz);
-    xstream.processAnnotations(clazz);
+    //xstream.processAnnotations(clazz);
     return (T) xstream.fromXML(is);
   }
 

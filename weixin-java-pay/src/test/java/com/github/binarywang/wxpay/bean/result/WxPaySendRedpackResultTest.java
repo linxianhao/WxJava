@@ -18,8 +18,8 @@ public class WxPaySendRedpackResultTest {
    */
   @BeforeTest
   public void setup() {
-    this.xstream = XStreamInitializer.getInstance();
-    this.xstream.processAnnotations(WxPaySendRedpackResult.class);
+    this.xstream = XStreamInitializer.getInstance(WxPaySendRedpackResult.class);
+    //this.xstream.processAnnotations(WxPaySendRedpackResult.class);
   }
 
   /**
