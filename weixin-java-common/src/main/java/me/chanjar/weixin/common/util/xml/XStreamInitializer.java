@@ -59,9 +59,9 @@ public class XStreamInitializer {
   }
 
   public static XStream getInstance(Class[] clazz,String key) {
-    XStream xStream = xStreamMap.get(key);
-    if (xStream != null){
-      return xStream;
+    XStream xs = xStreamMap.get(key);
+    if (xs != null){
+      return xs;
     }
     XStream xstream = new XStream(new PureJavaReflectionProvider(), XPP_DRIVER);
     xstream.ignoreUnknownElements();
@@ -71,7 +71,7 @@ public class XStreamInitializer {
       "me.chanjar.weixin.**", "cn.binarywang.wx.**", "com.github.binarywang.**"
     });
     xstream.processAnnotations(clazz);
-    xStreamMap.put(key,xStream);
+    xStreamMap.put(key,xstream);
     //xstream.setClassLoader(Thread.currentThread().getContextClassLoader());
     return xstream;
   }
