@@ -1,8 +1,8 @@
 package me.chanjar.weixin.common.util.xml;
 
 import java.io.Writer;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider;
@@ -13,7 +13,7 @@ import com.thoughtworks.xstream.io.xml.XppDriver;
 
 public class XStreamInitializer {
 
-  private static Map<String,XStream> xStreamMap = new HashMap<>();
+  private static Map<String,XStream> xStreamMap = new ConcurrentHashMap<>();
 
   private static final XppDriver XPP_DRIVER = new XppDriver() {
     @Override
@@ -46,7 +46,7 @@ public class XStreamInitializer {
   };
 
   public static XStream getInstance(Class clazz){
-    return getInstance(new Class[]{clazz},clazz.getSimpleName());
+    return getInstance(new Class[]{clazz},clazz.getName());
   }
 
   public static XStream getInstance(Class[] clazz){
