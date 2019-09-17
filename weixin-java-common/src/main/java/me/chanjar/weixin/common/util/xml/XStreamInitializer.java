@@ -13,7 +13,7 @@ import com.thoughtworks.xstream.io.xml.XppDriver;
 
 public class XStreamInitializer {
 
-  private static Map<Class[],XStream> xStreamMap = new HashMap<>();
+  private static Map<String,XStream> xStreamMap = new HashMap<>();
 
   private static final XppDriver XPP_DRIVER = new XppDriver() {
     @Override
@@ -46,11 +46,20 @@ public class XStreamInitializer {
   };
 
   public static XStream getInstance(Class clazz){
-    return getInstance(new Class[]{clazz});
+    return getInstance(new Class[]{clazz},clazz.getSimpleName());
   }
 
-  public static XStream getInstance(Class[] clazz) {
-    XStream xStream = xStreamMap.get(clazz);
+  public static XStream getInstance(Class[] clazz){
+    String key = "";
+    for (int i = 0; i < clazz.length; i++) {
+      key+=clazz[i].getSimpleName();
+
+    }
+    return getInstance(clazz,key);
+  }
+
+  public static XStream getInstance(Class[] clazz,String key) {
+    XStream xStream = xStreamMap.get(key);
     if (xStream != null){
       return xStream;
     }
@@ -62,7 +71,7 @@ public class XStreamInitializer {
       "me.chanjar.weixin.**", "cn.binarywang.wx.**", "com.github.binarywang.**"
     });
     xstream.processAnnotations(clazz);
-    xStreamMap.put(clazz,xStream);
+    xStreamMap.put(key,xStream);
     //xstream.setClassLoader(Thread.currentThread().getContextClassLoader());
     return xstream;
   }
